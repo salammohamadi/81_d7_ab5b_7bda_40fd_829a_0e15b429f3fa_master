@@ -39,7 +39,11 @@ const AddFaq = ({addFaq}) => {
   const [questionInput, setQuestionInput] = React.useState('');
   const [answerInput, setAnswerInput] = React.useState('');
 
-  const addFaqHandler = () => ({question: questionInput,answer: answerInput})
+  const addFaqHandler = () => {
+    setQuestionInput('');
+    setAnswerInput('');
+    addFaq({question: questionInput,answer: answerInput});
+    }
 
   return (
     <div className='flex align-items-center justify-content-center '>
@@ -77,7 +81,7 @@ const Faqs = () => {
     onDelete={() => itemDeleteHandler(faqItemData.answer)}
     />
     )}
-    <AddFaq addFaq={(newFaq) => setAvailableFaq(availableFaq.push(newFaq))}/>
+    <AddFaq addFaq={(newFaq) => setAvailableFaq(prevState => [...prevState , newFaq])}/>
     </>
   )
 }
