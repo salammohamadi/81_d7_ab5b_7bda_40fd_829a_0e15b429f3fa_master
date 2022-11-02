@@ -40,7 +40,10 @@ const AddFaq = ({addFaq}) => {
   const [answerInput, setAnswerInput] = React.useState('');
 
   const addFaqHandler = () => {
-    if((answerInput.length === 0 ) || (questionInput.length === 0)) alert('Please add both question and answer');
+    if((answerInput.length === 0 ) || (questionInput.length === 0)){
+      alert('Please add both question and answer');
+      return;
+    }
     setQuestionInput('');
     setAnswerInput('');
     addFaq({question: questionInput,answer: answerInput});
